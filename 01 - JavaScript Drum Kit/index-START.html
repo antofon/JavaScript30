@@ -1,10 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function (event) {
+    console.log("DOM content loaded.");
+
+
+    // add CSS class when keydown fires
+    // Play audio when keydown fires
+    document.addEventListener("keydown", function (event) {
+      switch (event.keyCode) {
+        case 65:
+          console.log("65 was pressed", document.querySelectorAll(".key")[0].classList.add("playing"));
+          // document.querySelectorAll("audio[data-key]")[0].play();
+          break;
+
+        case 83:
+          console.log("83 was pressed", document.querySelectorAll(".key")[1].classList.add("playing"));
+          break;
+
+        case 68:
+          console.log("68 was pressed", document.querySelectorAll(".key")[2].classList.add("playing"));
+          break;
+
+        case 70:
+          console.log("70 was pressed", document.querySelectorAll(".key")[3].classList.add("playing"));
+          break;
+
+        case 71:
+          console.log("71 was pressed", document.querySelectorAll(".key")[4].classList.add("playing"));
+          break;
+
+        case 72:
+          console.log("72 was pressed", document.querySelectorAll(".key")[5].classList.add("playing"));
+          break;
+
+        case 74:
+          console.log("74 was pressed", document.querySelectorAll(".key")[6].classList.add("playing"));
+          break;
+
+        case 75:
+          console.log("75 was pressed", document.querySelectorAll(".key")[7].classList.add("playing"));
+          break;
+
+        case 76:
+          console.log("76 was pressed", document.querySelectorAll(".key")[8].classList.add("playing"));
+          break;
+
+        default:
+          break;
+      }
+    });
+
+    // add CSS class when keydown fires,
+    document.addEventListener("keyup", function (event) {
+      switch (event.keyCode) {
+        case 65:
+          console.log("65 was pressed", document.querySelectorAll(".key")[0].classList.remove("playing"));
+          // document.querySelectorAll("audio[data-key]")[0].pause();
+          break;
+
+        case 83:
+          console.log("83 was pressed", document.querySelectorAll(".key")[1].classList.remove("playing"));
+          break;
+
+        case 68:
+          console.log("68 was pressed", document.querySelectorAll(".key")[2].classList.remove("playing"));
+          break;
+
+        case 70:
+          console.log("70 was pressed", document.querySelectorAll(".key")[3].classList.remove("playing"));
+          break;
+
+        case 71:
+          console.log("71 was pressed", document.querySelectorAll(".key")[4].classList.remove("playing"));
+          break;
+
+        case 72:
+          console.log("72 was pressed", document.querySelectorAll(".key")[5].classList.remove("playing"));
+          break;
+
+        case 74:
+          console.log("74 was pressed", document.querySelectorAll(".key")[6].classList.remove("playing"));
+          break;
+
+        case 75:
+          console.log("75 was pressed", document.querySelectorAll(".key")[7].classList.remove("playing"));
+          break;
+
+        case 76:
+          console.log("76 was pressed", document.querySelectorAll(".key")[8].classList.remove("playing"));
+          break;
+
+        default:
+          break;
+      }
+    })
+  });
+
+</script>
+
 <body>
 
 
@@ -57,10 +157,11 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
+  <script>
 
-</script>
+  </script>
 
 
 </body>
+
 </html>
