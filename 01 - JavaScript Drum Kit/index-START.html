@@ -17,7 +17,7 @@
       switch (event.keyCode) {
         case 65:
           console.log("65 was pressed", document.querySelectorAll(".key")[0].classList.add("playing"));
-          // document.querySelectorAll("audio[data-key]")[0].play();
+          document.querySelectorAll("audio[data-key]")[0].play();
           break;
 
         case 83:
@@ -62,7 +62,6 @@
       switch (event.keyCode) {
         case 65:
           console.log("65 was pressed", document.querySelectorAll(".key")[0].classList.remove("playing"));
-          // document.querySelectorAll("audio[data-key]")[0].pause();
           break;
 
         case 83:
