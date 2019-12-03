@@ -12,7 +12,7 @@
 
 
     // add CSS class when keydown fires
-    // Play audio when keydown fires
+    // Play audio of corresponding key when keydown fires
     document.addEventListener("keydown", function (event) {
       switch (event.keyCode) {
         case 65:
@@ -22,34 +22,42 @@
 
         case 83:
           console.log("83 was pressed", document.querySelectorAll(".key")[1].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[1].play();
           break;
 
         case 68:
           console.log("68 was pressed", document.querySelectorAll(".key")[2].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[2].play();
           break;
 
         case 70:
           console.log("70 was pressed", document.querySelectorAll(".key")[3].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[3].play();
           break;
 
         case 71:
           console.log("71 was pressed", document.querySelectorAll(".key")[4].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[4].play();
           break;
 
         case 72:
           console.log("72 was pressed", document.querySelectorAll(".key")[5].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[5].play();
           break;
 
         case 74:
           console.log("74 was pressed", document.querySelectorAll(".key")[6].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[6].play();
           break;
 
         case 75:
           console.log("75 was pressed", document.querySelectorAll(".key")[7].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[7].play();
           break;
 
         case 76:
           console.log("76 was pressed", document.querySelectorAll(".key")[8].classList.add("playing"));
+          document.querySelectorAll("audio[data-key]")[8].play();
           break;
 
         default:
@@ -57,7 +65,7 @@
       }
     });
 
-    // add CSS class when keydown fires,
+    // remove CSS class when keyup fires
     document.addEventListener("keyup", function (event) {
       switch (event.keyCode) {
         case 65:
