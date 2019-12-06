@@ -127,6 +127,7 @@
 
       console.log(`Sort #2: ${JSON.stringify(yearsLived)}`);
 
+      //commented out #6 solution because did not allow us to run the console
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
@@ -175,14 +176,14 @@
         "truck"
       ];
 
-// first start with a blank obj. every time we loop over object, check if there's a 0 to work with. if not, need to make an entry, and then increment it.
+      // first start with a blank obj. every time we loop over object, check if there's a 0 to work with. if not, need to make an entry, and then increment it.
       const transportation = data.reduce(function(obj, item) {
-        if(!obj[item]) {
+        if (!obj[item]) {
           obj[item] = 0;
         }
         obj[item]++;
         return obj;
-      }, {})
+      }, {});
     </script>
   </body>
 </html>
