@@ -1,46 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 }
+      ];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
+      console.log("hello");
 
-    // Regular
+      // Interpolated - embed expressions using ES6 backticks or %s and the second param has the placeholder value console.log("I am %s string", "stringy");
+      let myVar = "vary";
+      console.log(`Hello I am a variable called; ${myVar}`);
 
-    // Interpolated
+      // Styled - first argument, has string with %c placeholder. second argument has style's you want to use on the string
+      console.log("%c I am some great text", "font-size: 50px;");
 
-    // Styled
+      // warning! - shows us stack trace of what went wrong
+      console.warn("Oh noo!");
 
-    // warning!
+      // Error :| - also shows us a stack trace
+      console.error("Whoops!");
 
-    // Error :|
+      // Info
+      console.info("learn more about me");
+      // Testing - if the assertion is false, it will run the code in the method. if it's true, won't run at all
+      const p = document.querySelector;
+      console.assert(1 === 2, "that is wrong");
 
-    // Info
+      // clearing - clears the console
+      console.clear();
 
-    // Testing
+      // Viewing DOM Elements
+      console.dir;
 
-    // clearing
+      // Grouping together
+      dogs.forEach(dog => {
+        // console.group(`${dog.name}`);
+        // to be collapse on default
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.ag} years old`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+        // pass in same string you used to define group
+        console.groupEnd(`${dog.name}`);
+      });
 
-    // Viewing DOM Elements
+      // counting - counts how many times you use a specific word, etc.
+      console.count("bob");
+      console.count("bob");
+      console.count("bob");
+      console.count("tim");
+      console.count("tim");
+      // timing - if you want to see how long something takes. then you do something that takes time. like fetching data from GitHub
+      console.time("fetching data");
+      fetch("https://api.github.com/users/wesbos")
+        .then(data => data.json())
+        .then(data => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
 
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+      // display info logged in a table row/col format - can take can array of objects. assuming they have the same properties
+      console.table(dogs);
+    </script>
+  </body>
 </html>
