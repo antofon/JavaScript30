@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
-</head>
-<body>
-<script>
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      // when someone presses a sequence of keys, something happens
+      const pressed = [];
+      const secretCode = "manray";
+
+      window.addEventListener("keyup", e => {
+        console.log(e.key);
+        pressed.push(e.key);
+        //start counting from the end up seven letters, than trim from there, use negative
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+        if (pressed.join("").includes(secretCode)) {
+          console.log("You found it");
+          // adds random corny things after the KONAMI code is entered.
+          cornify_add();
+        }
+      });
+    </script>
+  </body>
 </html>
