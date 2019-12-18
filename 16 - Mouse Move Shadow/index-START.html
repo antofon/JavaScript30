@@ -1,40 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mouse Shadow</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mouse Shadow</title>
+  </head>
+  <body>
+    <div class="hero">
+      <h1 contenteditable>🔥WOAH!</h1>
+    </div>
 
-  <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
-  </div>
+    <style>
+      html {
+        color: black;
+        font-family: sans-serif;
+      }
 
-  <style>
-  html {
-    color: black;
-    font-family: sans-serif;
-  }
+      body {
+        margin: 0;
+      }
 
-  body {
-    margin: 0;
-  }
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+      }
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-  }
+      h1 {
+        text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+        font-size: 100px;
+      }
+    </style>
 
-  h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
-    font-size: 100px;
-  }
-  </style>
+    <script>
+      // listen for mousemove on hero. when that changes going to figure our how far, and where you should put text shadow on WOAH word.
 
-<script>
-</script>
-</body>
+      // if there a children elements in the hero element, need to do normalization. modify x and y values if hovering over the h1
+      const hero = document.querySelector(".hero");
+      const text = hero.querySelector("h1");
+      const walk = 100; // 100px;
+
+      function shadow(e) {
+        //get width and height
+        //destructure right off hero elt
+        const { offsetWidth: width, offsetHeight: height } = hero;
+        // using let because possible that we need to reassign values. gets you position of cursor
+        let { offsetX: x, offsetY: y } = e;
+        // this, thing that you listened on. e.target thing it got triggered on
+        if (this !== e.target) {
+          x = x + e.target.offsetLeft;
+          y = y + e.target.offsetTop;
+        }
+
+        // how many pixels at it's most should text shadow be stretched. Wes calls this the 'walk'
+        // offsetting to +50 and -50
+        //  if 100 is our walk, 50 should be as high as we go and -50 is as low as we'll go
+        const xWalk = Math.round((x / width) * walk - walk / 2);
+        const yWalk = Math.round((y / height) * walk - walk / 2);
+
+        text.style.textShadow = `
+        ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7), 
+        ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+        ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+        ${yWalk * -1}px ${xWalk}px 0 rgba(255,255,0,0.7)`;
+      }
+
+      hero.addEventListener("mousemove", shadow);
+    </script>
+  </body>
 </html>
