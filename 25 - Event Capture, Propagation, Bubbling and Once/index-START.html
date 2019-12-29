@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Understanding JavaScript's Capture</title>
-</head>
-<body class="bod">
-
-  <div class="one">
-    <div class="two">
-      <div class="three">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Understanding JavaScript's Capture</title>
+  </head>
+  <body class="bod">
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
       </div>
     </div>
-  </div>
 
-<style>
-  html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after { 
-    box-sizing: inherit; 
-  }
+    <style>
+      html {
+        box-sizing: border-box;
+      }
 
-  div {
-    width: 100%;
-    padding: 100px;
-  }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-  .one {
-    background: thistle;
-  }
+      div {
+        width: 100%;
+        padding: 100px;
+      }
 
-  .two {
-    background: mistyrose;
-  }
+      .one {
+        background: thistle;
+      }
 
-  .three {
-    background: coral;
-  }
-</style>
+      .two {
+        background: mistyrose;
+      }
 
-<button></button>
-<script>
+      .three {
+        background: coral;
+      }
+    </style>
 
-</script>
-</body>
+    <button></button>
+    <script>
+      // bubbling the browser will ripple up clicks
+      // when you make a click, it will ripple up to the top of the document and it will trigger a click event
+
+      // browser first does a capture. element first ripples down, captures all the events and then bubbles up. triggering the events as you're bubbling up
+      const divs = document.querySelectorAll("div");
+
+      function logText(e) {
+        console.log(this.classList.value);
+        // event.stopPropagation(). which says "stop" bubbling this event up
+        e.stopPropagation();
+      }
+
+      // this option gets triggered on the capture down instead of on the bubble up.
+      // so console.log will print "one" "two" "three" instead of "three" "two" "one"
+      // by default, capture is false
+
+      // once is a property that listens for a click once and then unbinds itself
+      divs.forEach(div =>
+        // div.addEventListener("click", logText, { capture: true })
+        div.addEventListener("click", logText, { capture: false, once: true })
+      );
+    </script>
+  </body>
 </html>
